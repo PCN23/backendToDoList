@@ -4,6 +4,8 @@ const request = require('supertest');
 const app = require('../lib/app');
 
 const fakeUser = {
+  firstName: 'Harrison',
+  lastName: 'James',
   email: 'popcorn1@hello.com',
   password: 'asdfgh',
 };
@@ -18,9 +20,9 @@ describe('user routes', () => {
 
     expect(res.body).toEqual({
       id: expect.any(String),
+      email,
       firstName,
       lastName,
-      email,
     });
   });
   afterAll(() => {
