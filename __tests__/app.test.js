@@ -40,7 +40,7 @@ describe('user routes', () => {
   it('get returns the current user', async () => {
     const [agent, user] = await registerAndLogin();
     const me = await agent.get('/api/v1/users/me');
-    //expect(me.status).toBe(200);
+    expect(me.status).toBe(200);
     expect(me.body).toEqual({
       ...user,
       exp: expect.any(Number),
@@ -51,7 +51,7 @@ describe('user routes', () => {
   it('DELETE /sessions deletes the user session', async () => {
     const [agent] = await registerAndLogin();
     const resp = await agent.delete('/api/v1/users/sessions');
-    expect(resp.status).toBe(200);
+    expect(resp.status).toBe(204);
   });
   afterAll(() => {
     pool.end();
